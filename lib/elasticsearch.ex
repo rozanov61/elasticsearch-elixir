@@ -172,7 +172,7 @@ defmodule Elasticsearch do
   end
 
   defp document_url(document, index) do
-    url = "/#{index}/_doc/#{Document.id(document)}"
+    url = "/#{index}/#{Document.id(document)}"
 
     if routing = Document.routing(document) do
       document_url_with_routing(url, routing)
@@ -279,7 +279,7 @@ defmodule Elasticsearch do
   ## Examples
 
       iex> Index.create_from_file(Cluster, "posts-1", "test/support/settings/posts.json")
-      ...> Elasticsearch.put(Cluster, "/posts-1/_doc/id", %{"title" => "title", "author" => "author"})
+      ...> Elasticsearch.put(Cluster, "/posts-1/id", %{"title" => "title", "author" => "author"})
       {:ok,
         %{
           "_id" => "id",
@@ -315,7 +315,7 @@ defmodule Elasticsearch do
   ## Examples
 
       iex> Index.create_from_file(Cluster, "posts", "test/support/settings/posts.json")
-      ...> Elasticsearch.put!(Cluster, "/posts/_doc/id", %{"name" => "name", "author" => "author"})
+      ...> Elasticsearch.put!(Cluster, "/posts/id", %{"name" => "name", "author" => "author"})
       %{
         "_id" => "id",
         "_index" => "posts",
