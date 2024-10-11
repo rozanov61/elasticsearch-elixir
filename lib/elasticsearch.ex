@@ -172,7 +172,7 @@ defmodule Elasticsearch do
   end
 
   defp document_url(document, index) do
-    url = "/#{index}/#{Document.id(document)}"
+    url = "/#{index}/_doc/#{Document.id(document)}"
 
     if routing = Document.routing(document) do
       document_url_with_routing(url, routing)
